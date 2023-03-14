@@ -37,7 +37,7 @@ def update_tasks(service: Manager = Depends()):
 
 ######   FIX IT but I don't know how
 @router.on_event('startup')
-@repeat_every(seconds=60 * 60, raise_exceptions=True)
+@repeat_every(seconds=60 * 60, wait_first=True)
 async def update_request():
     response = await requests.get('http://localhost:8000/tasks/update_tasks')
     return response
